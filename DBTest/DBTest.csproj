@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AC00B580-B808-491D-8182-0A845C667123}</ProjectGuid>
+    <ProjectGuid>{38A30C9D-F631-477A-8A8E-73FF5BF6C487}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>SendMail</RootNamespace>
-    <AssemblyName>SendMail</AssemblyName>
+    <RootNamespace>DBTest</RootNamespace>
+    <AssemblyName>DBTest</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,8 +33,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Net" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
