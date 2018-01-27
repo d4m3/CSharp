@@ -26,7 +26,7 @@ namespace AddSignatures
 
             // add signature control to form
             signature.Location = areaSignature.Location;
-            signature.Size = areaSignature.Size;            
+            signature.Size = areaSignature.Size;              
             //signature.Background = "C:\\Users\\<path>\\Downloads\\SignatureCapture\\SignCaptureV2\\Images\\sign here.png";
             this.Controls.Add(signature);
         }
@@ -37,17 +37,32 @@ namespace AddSignatures
         //}
         // Add areaSignature to Designer
 
+        // Clear Button
         private void btnNew_Click(object sender, EventArgs e)
         {
             signature.Clear();
             this.Refresh();
         }
 
+        // Save Button
+        // https://stackoverflow.com/questions/31352515/saving-image-from-picturebox-after-drawing-to-it
         private void btnSave_Click(object sender, EventArgs e)
         {
-            signature.StoreSigData("SignFile.txt");
+            //signature.StoreSigData("SignFile.txt");
+            //Bitmap bmp = new Bitmap(Convert.ToInt32(1024), Convert.ToInt32(1024), System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+            //Graphics g = Graphics.FromImage(bmp);
+            //g.Clear(Color.Green);
+
+            // Take image to be used for placing into pdf document
+            Bitmap bmp = new Bitmap(signature.ClientSize.Width, signature.ClientSize.Height);
+            signature.DrawToBitmap(bmp, signature.ClientRectangle);
+            //bmp.Save(@"C:\Users\<User>\Desktop\signature.png"+" "+ISO_Date());
+            
+            bmp.Save("C:\\Users\\<usr>\\Desktop\\signature"+ISO_Date()+".png");
         }
 
+        // Load Button
+        // TODO Recall the previous signed name, or use a drop down to get signature, need to match txtName and signature pic
         private void btnLoad_Click(object sender, EventArgs e)
         {
             int baseX = 10;
@@ -73,5 +88,10 @@ namespace AddSignatures
             }
             streamReader.Close();
         }
+        
+        // Identifier for different images
+        static String ISO_Date(){  return DateTime.Now.ToString("_MMddyyyyHHmmss"); }
+
+        // TODO Get name from pdf file to place in txtName
     }
 }
