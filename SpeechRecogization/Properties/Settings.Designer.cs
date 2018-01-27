@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LearningEntityFramework.Properties
+namespace SpeechRecogization.Properties
 {
 
 

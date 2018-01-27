@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningEntityFramework", "LearningEntityFramework.csproj", "{6DB90EEE-EE96-4E4F-9121-B21D8FDCBE79}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeechRecogization", "SpeechRecogization.csproj", "{D610E6EE-49EA-4618-8A05-9F1C64498211}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6DB90EEE-EE96-4E4F-9121-B21D8FDCBE79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6DB90EEE-EE96-4E4F-9121-B21D8FDCBE79}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6DB90EEE-EE96-4E4F-9121-B21D8FDCBE79}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6DB90EEE-EE96-4E4F-9121-B21D8FDCBE79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D610E6EE-49EA-4618-8A05-9F1C64498211}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D610E6EE-49EA-4618-8A05-9F1C64498211}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D610E6EE-49EA-4618-8A05-9F1C64498211}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D610E6EE-49EA-4618-8A05-9F1C64498211}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {73F57C65-685B-441C-A66F-9EE8319A39A1}
+		SolutionGuid = {59DEC8CA-946E-4C50-88EA-F318DB070147}
 	EndGlobalSection
 EndGlobal
