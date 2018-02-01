@@ -25,6 +25,7 @@ namespace SplashScreen
 
         }
 
+        // Timer
         private void timer_Tick(object sender, EventArgs e)
         {
             timer.Start();
