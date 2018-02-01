@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SplashScreen", "SplashScreen.csproj", "{CAED0BD7-639D-4BDF-999C-A06B546D91CD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CAED0BD7-639D-4BDF-999C-A06B546D91CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAED0BD7-639D-4BDF-999C-A06B546D91CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAED0BD7-639D-4BDF-999C-A06B546D91CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAED0BD7-639D-4BDF-999C-A06B546D91CD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2B139E04-31F5-49E8-B256-E56B12AA6067}
+	EndGlobalSection
+EndGlobal
