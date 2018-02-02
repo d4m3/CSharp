@@ -58,7 +58,23 @@ namespace AddSignatures
             signature.DrawToBitmap(bmp, signature.ClientRectangle);
             //bmp.Save(@"C:\Users\<User>\Desktop\signature.png"+" "+ISO_Date());
             
-            bmp.Save("C:\\Users\\<usr>\\Desktop\\signature"+ISO_Date()+".png");
+
+            // This will be handled by the Dialog Result
+            //bmp.Save("C:\\Users\\dof344\\Desktop\\Signatures"+ISO_Date()+".png");
+
+            //TODO Close the window once signed
+            DialogResult dr = MessageBox.Show("Would you like to retry your signature?","Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.No)
+            {
+                bmp.Save("C:\\Users\\dof344\\Desktop\\Signatures" + ISO_Date() + ".png");
+                this.Close();
+            }
+            if (dr == DialogResult.Yes)
+            {
+                signature.Clear();
+                this.Refresh();
+            }
+                        
         }
 
         // Load Button
@@ -68,7 +84,7 @@ namespace AddSignatures
             int baseX = 10;
             int baseY = 40; // 100
             string signatureFile = "SignFile.txt";
-            load_signature(baseX, baseY, signatureFile);
+            load_signature(baseX, baseY, signatureFile); // Need to set path for sign txt file
         }
 
         private void load_signature(int baseX, int baseY, string signatureFile)
