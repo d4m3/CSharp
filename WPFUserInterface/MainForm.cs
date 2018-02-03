@@ -26,7 +26,7 @@ namespace WPFUserInterface
         {
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
-            var results = DemoMethods.RunDownloadSync();
+            var results = DemoMethods.RunDownloadSync(); //RunDownloadParallelSync
             PrintResults(results);
 
             watch.Stop();

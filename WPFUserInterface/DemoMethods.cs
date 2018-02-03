@@ -42,6 +42,26 @@ namespace WPFUserInterface
             return output;
         }
 
+        public static List<WebsiteDataModel> RunDownloadParallelSync()
+        {
+            List<string> websites = PrepData();
+            List<WebsiteDataModel> output = new List<WebsiteDataModel>();
+
+            // Pararell ForEach: 
+            // foreach (string site in website)
+            // { 
+            //    WebsiteDataModel results = DownloadWebsite(site);
+            //    output.Add(results);
+            //  }                  
+            Parallel.ForEach<string>(websites, (site) =>
+            {
+                 WebsiteDataModel results = DownloadWebsite(site);
+                 output.Add(results);
+            });
+
+            return output;
+        }
+
         public static async Task<List<WebsiteDataModel>> RunDownloadAsync(IProgress<ProgressReportModel> progress, CancellationToken cancellationToken)
         {            
             List<string> websites = PrepData();
