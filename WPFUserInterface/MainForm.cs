@@ -5,13 +5,18 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WPFUserInterface
 {
+
     public partial class Form1 : Form
     {
+        // Cancelation Token Src for termnation process
+        CancellationTokenSource cts = new CancellationTokenSource();
+
         public Form1()
         {
             InitializeComponent();
@@ -37,8 +42,15 @@ namespace WPFUserInterface
 
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
-            var results = await DemoMethods.RunDownloadAsync(progress);
-            PrintResults(results);
+            try
+            {
+                var results = await DemoMethods.RunDownloadAsync(progress, cts.Token);
+                PrintResults(results);
+            }
+            catch (OperationCanceledException)
+            {
+                resultsWindow.Text += $"The Async download was cancelled. { Environment.NewLine }";                
+            }
 
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
@@ -71,7 +83,7 @@ namespace WPFUserInterface
         // Cancel
         private void cancelOperation_Click(object sender, EventArgs e)
         {
-
+            cts.Cancel();
         }
 
         private void PrintResults(List<WebsiteDataModel> results)

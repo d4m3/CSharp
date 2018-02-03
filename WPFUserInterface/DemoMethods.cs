@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace WPFUserInterface
@@ -41,8 +42,8 @@ namespace WPFUserInterface
             return output;
         }
 
-        public static async Task<List<WebsiteDataModel>> RunDownloadAsync(IProgress<ProgressReportModel> progress)
-        {
+        public static async Task<List<WebsiteDataModel>> RunDownloadAsync(IProgress<ProgressReportModel> progress, CancellationToken cancellationToken)
+        {            
             List<string> websites = PrepData();
             List<WebsiteDataModel> output = new List<WebsiteDataModel>();
             ProgressReportModel report = new ProgressReportModel();
@@ -52,7 +53,9 @@ namespace WPFUserInterface
                 WebsiteDataModel results = await DownloadWebsiteAsync(site);
                 output.Add(results);
 
-                // Adding Cancelling functionaly if page takes too long to download
+                // TODO implement if to check IsCancellationRequested method
+                // Adding Cancelling functionaly if page takes too long to download, Won't cancel unless the task is cancelled (clicked)
+                cancellationToken.ThrowIfCancellationRequested();                
 
                 report.SitesDownloaded = output;
                 report.PercentageComplete = (output.Count * 100) / websites.Count; // converting to percent values
