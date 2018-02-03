@@ -68,9 +68,12 @@ namespace WPFUserInterface
         // Parallel
         private async void executeParallelAsync_Click(object sender, EventArgs e)
         {
+            Progress<ProgressReportModel> progress = new Progress<ProgressReportModel>();
+            progress.ProgressChanged += ReportProgress;
+
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
-            var results = await DemoMethods.RunDownloadParallelAsync();
+            var results = await DemoMethods.RunDownloadParallelAsyncV2(progress);//RunDownloadParallelAsync();
             PrintResults(results);
 
             watch.Stop();
@@ -88,7 +91,7 @@ namespace WPFUserInterface
 
         private void PrintResults(List<WebsiteDataModel> results)
         {
-            resultsWindow.Text=" ";
+            resultsWindow.Text="";
             foreach (var item in results)
             {
                 resultsWindow.Text += $"{item.WebsiteUrl} downloaded: {item.WebsiteData.Length} characters long.{ Environment.NewLine }";

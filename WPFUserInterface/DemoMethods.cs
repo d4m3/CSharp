@@ -42,12 +42,13 @@ namespace WPFUserInterface
             return output;
         }
 
+        // Using Parallel ForEach
         public static List<WebsiteDataModel> RunDownloadParallelSync()
         {
             List<string> websites = PrepData();
             List<WebsiteDataModel> output = new List<WebsiteDataModel>();
 
-            // Pararell ForEach: 
+            // Parallel ForEach: 
             // foreach (string site in website)
             // { 
             //    WebsiteDataModel results = DownloadWebsite(site);
@@ -60,7 +61,31 @@ namespace WPFUserInterface
             });
 
             return output;
-        }
+        }//RunDownloadParallelSync
+
+        // Wrapping Parallel.ForEach to an Async Task
+        public  static async Task<List<WebsiteDataModel>> RunDownloadParallelAsyncV2(IProgress<ProgressReportModel> progress)
+        {
+            List<string> websites = PrepData();
+            List<WebsiteDataModel> output = new List<WebsiteDataModel>();
+            ProgressReportModel report = new ProgressReportModel();
+
+            await Task.Run(() =>
+            {
+                Parallel.ForEach<string>(websites, (site) =>
+                {
+                    WebsiteDataModel results = DownloadWebsite(site);
+                    output.Add(results);
+
+                    report.SitesDownloaded = output;
+                    report.PercentageComplete = (output.Count * 100) / websites.Count; // converting to percent values
+                    progress.Report(report);
+                });
+
+            });
+
+            return output;
+        }//RunDownloadParallelAsyncV2
 
         public static async Task<List<WebsiteDataModel>> RunDownloadAsync(IProgress<ProgressReportModel> progress, CancellationToken cancellationToken)
         {            
@@ -83,7 +108,7 @@ namespace WPFUserInterface
             }
 
             return output;
-        }
+        }// RunDownloadAsync
 
         public static async Task<List<WebsiteDataModel>> RunDownloadParallelAsync()
         {
@@ -98,7 +123,7 @@ namespace WPFUserInterface
             var results = await Task.WhenAll(tasks);
 
             return new List<WebsiteDataModel>(results);
-        }
+        }// RunDownloadParallelAsync
 
         private static async Task<WebsiteDataModel> DownloadWebsiteAsync(string websiteURL)
         {
@@ -109,7 +134,7 @@ namespace WPFUserInterface
             output.WebsiteData = await client.DownloadStringTaskAsync(websiteURL);
 
             return output;
-        }
+        }// DownloadWebsiteAsync
 
         private static WebsiteDataModel DownloadWebsite(string websiteURL)
         {
@@ -120,6 +145,6 @@ namespace WPFUserInterface
             output.WebsiteData = client.DownloadString(websiteURL);
 
             return output;
-        }
+        }// DownloadWebsite
     }
 }
