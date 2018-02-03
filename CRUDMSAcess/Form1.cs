@@ -71,7 +71,7 @@ namespace CRUDMSAcess
             }
         }
 
-        // New Button
+        // New Button  
         private void btnNew_Click(object sender, EventArgs e)
         {
             try
