@@ -9,9 +9,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+// TODO - disable buttons to be grayed when clicked
 namespace WPFUserInterface
 {
-
     public partial class Form1 : Form
     {
         // Cancelation Token Src for termnation process
