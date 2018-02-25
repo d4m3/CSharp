@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.Menu = new System.Windows.Forms.MenuStrip();
             this.applicationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tACITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.anakamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,21 +51,27 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.feedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip.SuspendLayout();
+            this.ExitMenu = new System.Windows.Forms.Panel();
+            this.MinMaxMenu = new System.Windows.Forms.Panel();
+            this.MinMenu = new System.Windows.Forms.Panel();
+            this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip
+            // Menu
             // 
-            this.menuStrip.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Menu.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.applicationsToolStripMenuItem,
             this.helpToolStripMenuItem});
-            this.menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Padding = new System.Windows.Forms.Padding(6, 7, 0, 5);
-            this.menuStrip.Size = new System.Drawing.Size(850, 31);
-            this.menuStrip.TabIndex = 0;
-            this.menuStrip.Text = "menuStrip1";
+            this.Menu.Location = new System.Drawing.Point(0, 0);
+            this.Menu.Name = "Menu";
+            this.Menu.Padding = new System.Windows.Forms.Padding(6, 7, 0, 5);
+            this.Menu.Size = new System.Drawing.Size(850, 31);
+            this.Menu.TabIndex = 0;
+            this.Menu.Text = "menuStrip1";
+            this.Menu.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Menu_MouseDown);
+            this.Menu.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Menu_MouseMove);
+            this.Menu.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Menu_MouseUp);
             // 
             // applicationsToolStripMenuItem
             // 
@@ -185,6 +191,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -214,19 +221,56 @@
             this.contactToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.contactToolStripMenuItem.Text = "Contact";
             // 
+            // ExitMenu
+            // 
+            this.ExitMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExitMenu.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.ExitMenu.Location = new System.Drawing.Point(820, 0);
+            this.ExitMenu.Name = "ExitMenu";
+            this.ExitMenu.Size = new System.Drawing.Size(30, 30);
+            this.ExitMenu.TabIndex = 2;
+            this.ExitMenu.Click += new System.EventHandler(this.ExitMenu_Click);
+            this.ExitMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.ExitMenu_Paint);
+            // 
+            // MinMaxMenu
+            // 
+            this.MinMaxMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MinMaxMenu.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.MinMaxMenu.Location = new System.Drawing.Point(790, 0);
+            this.MinMaxMenu.Name = "MinMaxMenu";
+            this.MinMaxMenu.Size = new System.Drawing.Size(30, 30);
+            this.MinMaxMenu.TabIndex = 2;
+            this.MinMaxMenu.Click += new System.EventHandler(this.MinMaxMenu_Click);
+            this.MinMaxMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.MinMaxMenu_Paint);
+            // 
+            // MinMenu
+            // 
+            this.MinMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MinMenu.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.MinMenu.Location = new System.Drawing.Point(760, 0);
+            this.MinMenu.Name = "MinMenu";
+            this.MinMenu.Size = new System.Drawing.Size(30, 30);
+            this.MinMenu.TabIndex = 2;
+            this.MinMenu.Click += new System.EventHandler(this.MinMenu_Click);
+            this.MinMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.MinMenu_Paint);
+            // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(850, 500);
-            this.Controls.Add(this.menuStrip);
+            this.Controls.Add(this.MinMenu);
+            this.Controls.Add(this.MinMaxMenu);
+            this.Controls.Add(this.ExitMenu);
+            this.Controls.Add(this.Menu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MainMenuStrip = this.menuStrip;
+            this.MainMenuStrip = this.Menu;
             this.Name = "Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.menuStrip.ResumeLayout(false);
-            this.menuStrip.PerformLayout();
+            this.Load += new System.EventHandler(this.Form_Load);
+            this.Menu.ResumeLayout(false);
+            this.Menu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,7 +278,7 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.MenuStrip Menu;
         private System.Windows.Forms.ToolStripMenuItem applicationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tACITToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem anakamToolStripMenuItem;
@@ -256,6 +300,9 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem feedbackToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contactToolStripMenuItem;
+        private System.Windows.Forms.Panel ExitMenu;
+        private System.Windows.Forms.Panel MinMaxMenu;
+        private System.Windows.Forms.Panel MinMenu;
     }
 }
 
